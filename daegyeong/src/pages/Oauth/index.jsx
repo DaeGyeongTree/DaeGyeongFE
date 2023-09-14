@@ -12,7 +12,7 @@ const LoginButton = styled.button`
 	backgroun-color: transparent;
 `;
 
-const LoginPage = () => {
+const Oauth = () => {
 	const [id, setId] = useInput('');
 	const [pw, setPw] = useInput('');
 
@@ -21,7 +21,8 @@ const LoginPage = () => {
 	const link = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
 	const handleLogin = () => {
-		window.location.href = link;
+		// window.location.href = link;
+		console.log(id, pw);
 	};
 
 	return (
@@ -39,4 +40,4 @@ const LoginPage = () => {
 	);
 };
 
-export default LoginPage;
+export default Oauth;
