@@ -7,9 +7,9 @@ const LoginParentDiv = styled.div`
 `;
 
 const LoginButton = styled.button`
-	width: 50%;
 	border: none;
 	cursor: pointer;
+	backgroun-color: transparent;
 `;
 
 const LoginPage = () => {
@@ -29,7 +29,11 @@ const LoginPage = () => {
 			<input placeholder="ID" onChange={setId} value={id} name="id" />
 			<input placeholder="Password" onChange={setPw} value={pw} name="pw" />
 			<LoginButton type="button" onClick={handleLogin}>
-				<img src={`${process.env.PUBLIC_URL}/image/kakaoLogin.png`} alt="Login" />
+				<img
+					src="//k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
+					width="222"
+					alt="Login"
+				/>
 			</LoginButton>
 		</LoginParentDiv>
 	);
