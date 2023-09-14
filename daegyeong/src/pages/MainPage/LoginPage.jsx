@@ -13,7 +13,8 @@ const LoginButton = styled.button`
 `;
 
 const LoginPage = () => {
-	const [value, setValue] = useInput('');
+	const [id, setId] = useInput('');
+	const [pw, setPw] = useInput('');
 
 	const REST_API_KEY = 'd327db44707a21596651c9d4def1507a';
 	const REDIRECT_URI = 'http://localhost:3000/login/oauth';
@@ -25,6 +26,8 @@ const LoginPage = () => {
 
 	return (
 		<LoginParentDiv>
+			<input placeholder="ID" onChange={setId} value={id} name="id" />
+			<input placeholder="Password" onChange={setPw} value={pw} name="pw" />
 			<LoginButton type="button" onClick={handleLogin}>
 				<img src={`${process.env.PUBLIC_URL}/image/kakaoLogin.png`} alt="Login" />
 			</LoginButton>
