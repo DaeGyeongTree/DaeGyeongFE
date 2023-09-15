@@ -4,6 +4,7 @@ import Layout from 'layout';
 import MainPage from 'pages/MainPage';
 import RecipePage from 'pages/RecipePage';
 import Oauth from 'pages/Oauth';
+import KakaoRedirectHandler from 'components/KakaoRedirectHandler';
 
 function App() {
 	return (
@@ -12,6 +13,7 @@ function App() {
 				<Route element={<Layout />}>
 					<Route path="/" element={<MainPage />} />
 					<Route path="/login" element={<Oauth />} />
+					<Route path="/login/oauth/callback/kakao" element={<KakaoRedirectHandler />} />
 					<Route path="/recipe" element={<RecipePage />} />
 				</Route>
 			</Routes>
