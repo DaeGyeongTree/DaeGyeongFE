@@ -5,7 +5,6 @@ import Modal from 'components/Modal';
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 `;
 const RecipeTitleDiv = styled.div`
 	display: flex;
@@ -25,6 +24,17 @@ const RecipeList = styled.div`
 	gap: 78px 2rem;
 	justify-content: center;
 `;
+const ModalDiv = styled.div`
+	diplay: flex;
+	margin-right: 1rem;
+	text-align: right;
+	padding: 1rem;
+`;
+const ModalBtn = styled.button`
+	font-size: 16px;
+	border: 0;
+	border-bottom: 1px solid black;
+`;
 const RecipePage = () => {
 	const [onModal, clsoeModal] = useState(false);
 	let arr = ['1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'];
@@ -37,7 +47,9 @@ const RecipePage = () => {
 				<Title>간편레시피를 한눈에</Title>
 				<SubTitle>여러 사용자들이 올린 간편 레시피를 통해 요리에 쉽게 다가가보세요</SubTitle>
 			</RecipeTitleDiv>
-			<button onClick={HandleModal}>모달</button>
+			<ModalDiv>
+				<ModalBtn onClick={HandleModal}>레시피 추가</ModalBtn>
+			</ModalDiv>
 			{onModal ? <Modal show={onModal} onCloseModal={HandleModal} /> : ''}
 			<RecipeList>
 				{arr.map((e, index) => {

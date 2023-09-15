@@ -22,8 +22,21 @@ const Title = styled.h1`
 	font-size: 2.4rem;
 `;
 const ModalIntro = styled.div``;
+const ImgBtnDiv = styled.div`
+	border: 1px solid black;
+	border-radius: 10px;
+	width: 40%;
+	height: 22rem;
+`;
+const Img = styled.img`
+	width: 40%;
+	height: 22rem;
+	border-radius: 10px;
+`;
 const TextAreaDiv = styled.div`
 	margin: 1rem 0;
+	display: flex;
+	gap: 1rem;
 `;
 const InputFile = styled.input`
 	display: none;
@@ -51,7 +64,20 @@ const Modal = ({ show, onCloseModal }) => {
 	const [ImgSrc, setImgSrc] = useState('');
 	const ref = useRef();
 
-	const onUploadImg = useCallback(() => {}, []);
+	const HandleUpload = useCallback(() => {
+		ref.current.click();
+	}, []);
+	const onUploadImg = useCallback(e => {
+		if (!e.target.files === undefined) return;
+		const reader = new FileReader();
+		if (e.target.files[0]) {
+			reader.readAsDataURL(e.target.files[0]);
+		}
+		reader.onloadend = () => {
+			const previewImgUrl = reader.result;
+			setImgSrc(previewImgUrl);
+		};
+	}, []);
 	return (
 		<Container>
 			<ModalTitle>
@@ -64,6 +90,7 @@ const Modal = ({ show, onCloseModal }) => {
 			</ModalIntro>
 			<TextAreaDiv>
 				<InputFile type="file" multiple accept="image/*" ref={ref} onChange={e => onUploadImg(e)} />
+				{ImgSrc ? <Img src={ImgSrc} /> : <ImgBtnDiv label="이미지 업로드" onClick={HandleUpload} />}
 				<TextWrite
 					value={WriteData}
 					onChange={setData}
