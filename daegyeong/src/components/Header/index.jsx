@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { FaBars } from 'react-icons/fa6';
 const Container = styled.div`
 	padding: 0 5rem;
-	width: 100%;
 	height: 5rem;
 	display: flex;
 	justify-content: space-between;
