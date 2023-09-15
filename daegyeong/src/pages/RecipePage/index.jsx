@@ -11,7 +11,7 @@ const RecipeTitleDiv = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-`;1
+`;
 const Title = styled.h1`
 	font-size: 44px;
 `;
