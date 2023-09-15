@@ -7,12 +7,10 @@ const defaultHeaders = {
 };
 export const axiosGetQuery = async (url, headers = defaultHeaders) => {
 	const res = await axios.get(ENDPOINT + url, {}, headers);
-
 	return res.data;
 };
 export const axiosGet = async (url, body, headers = defaultHeaders) => {
 	const res = await axios.get(ENDPOINT + url, body, headers);
-
 	return res.data;
 };
 export const axiosPostQuery = async (url, headers = defaultHeaders) => {
