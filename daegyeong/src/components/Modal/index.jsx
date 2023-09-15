@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import useInput from 'hooks/useInput';
 import { FaXmark } from 'react-icons/fa6';
 const Container = styled.div`
-	width: 30rem;
+	width: 50rem;
 	border: 0.1px solid grey;
 	background: white;
 	border-radius: 10px;
 	position: fixed;
 	z-index: 1022;
-	left: 26%;
-	top: 20%;
+	left: 20%;
+	top: 25%;
 	padding: 32px 40px;
 `;
 const ModalTitle = styled.div`
@@ -25,9 +25,12 @@ const ModalIntro = styled.div``;
 const TextAreaDiv = styled.div`
 	margin: 1rem 0;
 `;
+const InputFile = styled.input`
+	display: none;
+`;
 const TextWrite = styled.textarea`
 	border-radius: 10px;
-	width: 93%;
+	width: 50%;
 	height: 20rem;
 	padding: 1rem;
 	font-size: 16px;
@@ -45,7 +48,10 @@ const SubmitDiv = styled.div`
 `;
 const Modal = ({ show, onCloseModal }) => {
 	const [WriteData, setData] = useInput('');
+	const [ImgSrc, setImgSrc] = useState('');
+	const ref = useRef();
 
+	const onUploadImg = useCallback(() => {}, []);
 	return (
 		<Container>
 			<ModalTitle>
@@ -57,6 +63,7 @@ const Modal = ({ show, onCloseModal }) => {
 				<span>나만의 간편 레시피를 공유해보세요:)</span>
 			</ModalIntro>
 			<TextAreaDiv>
+				<InputFile type="file" multiple accept="image/*" ref={ref} onChange={e => onUploadImg(e)} />
 				<TextWrite
 					value={WriteData}
 					onChange={setData}

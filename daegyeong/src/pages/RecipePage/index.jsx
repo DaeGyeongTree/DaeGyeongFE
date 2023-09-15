@@ -21,7 +21,7 @@ const SubTitle = styled.span`
 `;
 const RecipeList = styled.div`
 	display: grid;
-	grid-template: repeat(2, 1fr) / repeat(3, 384px);
+	grid-template: repeat(2, 1fr) / repeat(3, 340px);
 	gap: 78px 2rem;
 	justify-content: center;
 `;
