@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useInput from 'hooks/useInput';
 import styled from 'styled-components';
 
@@ -21,8 +21,7 @@ const Oauth = () => {
 	const link = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
 	const handleLogin = () => {
-		// window.location.href = link;
-		console.log(id, pw);
+		window.location.href = link;
 	};
 
 	return (
