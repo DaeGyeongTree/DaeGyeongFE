@@ -13,6 +13,10 @@ const Container = styled.div`
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 `;
+const FoodTypeListBox = styled.div`
+	display: flex;
+	justify-content: center;
+`;
 
 const Refrigerator = () => {
 	const [posts, setPosts] = useState([]);
@@ -30,7 +34,9 @@ const Refrigerator = () => {
 	return (
 		<Container>
 			<ButtonList />
-			<FoodTypeList posts={posts} />
+			<FoodTypeListBox>
+				<FoodTypeList posts={posts} />
+			</FoodTypeListBox>
 			<FoodList />
 		</Container>
 	);
