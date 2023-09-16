@@ -1,4 +1,5 @@
-import React from 'react';
+import FoodListModal from 'components/Modal/FoodListModal';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
 
 const LoginParentDiv = styled.div`
@@ -60,6 +61,19 @@ const LoginButton = styled.button`
 	}
 `;
 
+const ModalDiv = styled.div`
+	diplay: flex;
+	margin-right: 1rem;
+	text-align: right;
+	padding: 1rem;
+`;
+const ModalBtn = styled.button`
+	font-size: 16px;
+	background-color: transparent;
+	border: 0;
+	border-bottom: 1px solid black;
+`;
+
 const Oauth = () => {
 	const REST_API_KEY = 'd5f4fb35c8723da094707fa1ce99f285';
 	const REDIRECT_URI = 'http://localhost:3000/auth/login/callback';
@@ -68,6 +82,12 @@ const Oauth = () => {
 	const handleLogin = () => {
 		window.open(link, '_self');
 	};
+
+	const [onModal, clsoeModal] = useState(false);
+	let arr = ['1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'];
+	const HandleModal = useCallback(() => {
+		clsoeModal(prev => !prev);
+	}, []);
 
 	return (
 		<LoginParentDiv>
@@ -83,6 +103,10 @@ const Oauth = () => {
 					<img src={`${process.env.PUBLIC_URL}/image/Kakao.png`} alt="Kakao" />
 					<p>카카오 로그인</p>
 				</LoginButton>
+				<ModalDiv>
+					<ModalBtn onClick={HandleModal}>레시피 추가</ModalBtn>
+				</ModalDiv>
+				{onModal ? <FoodListModal show={onModal} onCloseModal={HandleModal} /> : ''}
 			</LoginRightDiv>
 		</LoginParentDiv>
 	);
