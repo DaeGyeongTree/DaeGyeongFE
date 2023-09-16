@@ -1,7 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ItemBox from 'components/ItemBox';
-import Modal from 'components/Modal';
+import RecipeRegister from 'components/Modal/RecipeRegister';
+
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -42,6 +43,7 @@ const RecipePage = () => {
 	const HandleModal = useCallback(() => {
 		clsoeModal(prev => !prev);
 	}, []);
+
 	return (
 		<Container>
 			<RecipeTitleDiv>
@@ -51,7 +53,7 @@ const RecipePage = () => {
 			<ModalDiv>
 				<ModalBtn onClick={HandleModal}>레시피 추가</ModalBtn>
 			</ModalDiv>
-			{onModal ? <Modal show={onModal} onCloseModal={HandleModal} /> : ''}
+			{onModal ? <RecipeRegister show={onModal} onCloseModal={HandleModal} /> : ''}
 			<RecipeList>
 				{arr.map((e, index) => {
 					return <ItemBox key={index} />;
