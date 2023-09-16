@@ -19,16 +19,16 @@ const FoodTypeListBox = styled.div`
 `;
 
 const Refrigerator = () => {
-	const [posts, setPosts] = useState([]);
+	// const [posts, setPosts] = useState([]);
 	const [lists, setLists] = useState([]);
 
-	const id = 1;
-	const fetchData = async () => {
-		const res = await axiosGetQuery(`ingredients?category=${id}`);
-		setPosts(res);
-	};
+	// const id = 1;
+	// const fetchData = async () => {
+	// 	const res = await axiosGetQuery(`ingredients?category=${id}`);
+	// 	setPosts(res);
+	// };
 	const fetchData2 = async () => {
-		const res = await axiosGetQuery('ingredients/category');
+		const res = await axiosGetQuery('/ingredients/category');
 		console.log(res);
 		setLists(res);
 	};
@@ -36,6 +36,7 @@ const Refrigerator = () => {
 	useEffect(() => {
 		fetchData2();
 	}, []);
+	// useEffect(() => {}, [fetchData]);
 
 	return (
 		<Container>

@@ -22,7 +22,6 @@ const FoodTypeList = ({ lists }) => {
 	const handleClicked = id => {
 		let newClicked = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 		newClicked[id - 1] = 1;
-		console.log(newClicked);
 
 		setClicked([...newClicked]);
 		setFlag(id);

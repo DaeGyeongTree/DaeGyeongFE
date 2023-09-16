@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import useInput from 'hooks/useInput';
 import { FaXmark, FaImage } from 'react-icons/fa6';
 import { axiosGetQuery, axiosPost } from 'utils/AxiosUtils';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 const Container = styled.div`
 	width: 70rem;
@@ -51,18 +50,7 @@ const TextAreaDiv = styled.div`
 const Register = styled.div`
 	width: 65%;
 `;
-const RegisterInput = styled.input`
-	width: 90%;
-	padding: 1.2rem;
-	border-radius: 10px;
-	font-size: 16px;
-	border : 1px solid #BDBDBD
 
-
-	input::foucs {
-		outline: none;
-	}
-`;
 const Choice = styled.div`
 	width: 30%;
 	height: 18rem;
