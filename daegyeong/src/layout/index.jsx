@@ -8,9 +8,7 @@ const Container = styled.div`
 `;
 const HeaderDiv = styled.div``;
 
-const SectionDiv = styled.section`
-	padding: 4rem 4rem;
-`;
+const SectionDiv = styled.section``;
 const layout = () => {
 	return (
 		<Container>
