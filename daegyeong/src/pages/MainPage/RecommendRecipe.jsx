@@ -16,7 +16,7 @@ const Title = styled.h1`
 	font-style: bold;
 `;
 const ListBox = styled.div`
-	margin-top: 1rem;
+	margin-top: 2rem;
 `;
 const RecommendRecipe = () => {
 	const [posts, setPosts] = useState([

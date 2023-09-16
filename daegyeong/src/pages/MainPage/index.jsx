@@ -19,7 +19,7 @@ const RefrigeratorLayout = styled.div`
 	justify-content: center;
 `;
 const Title = styled.h1`
-	margin: 5rem 0;
+	margin: 4rem 0;
 	text-align: center;
 	font-size: 3.2rem;
 	font-weight: bold;
@@ -27,14 +27,30 @@ const Title = styled.h1`
 const Row = styled.div`
 	display: flex;
 	justify-content: center;
+	margin: 0 3rem;
 `;
 const RefrigeratorBox = styled.div`
 	flex: 6;
+	margin: 1rem 1.2rem;
+`;
+const SubTitle = styled.h1`
+	display: inline;
+	border-bottom: 2px solid black;
+	margin: 0;
+	padding-bottom: 0.7rem;
+	font-size: 2rem;
+	font-style: bold;
+`;
+const RefrigeratorList = styled.div`
+	margin-top: 2rem;
 `;
 const RecommendBox = styled.div`
 	flex: 4;
+	margin: 1rem 1.2rem;
 `;
 const MainPage = () => {
+	const user = 'wndus';
+
 	return (
 		<Container>
 			<MainLayout>
@@ -45,7 +61,12 @@ const MainPage = () => {
 				<Title>냉장고에 있는 재료로 레시피 추천</Title>
 				<Row>
 					<RefrigeratorBox>
-						<Refrigerator />
+						<div>
+							<SubTitle>{user}님의 냉장고</SubTitle>
+						</div>
+						<RefrigeratorList>
+							<Refrigerator />
+						</RefrigeratorList>
 					</RefrigeratorBox>
 					<RecommendBox>
 						<RecommendRecipe />
