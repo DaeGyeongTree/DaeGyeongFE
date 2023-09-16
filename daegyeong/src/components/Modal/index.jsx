@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import useInput from 'hooks/useInput';
-import { FaXmark } from 'react-icons/fa6';
+import { FaXmark, FaImage } from 'react-icons/fa6';
 const Container = styled.div`
 	width: 50rem;
 	border: 0.1px solid grey;
@@ -23,10 +23,17 @@ const Title = styled.h1`
 `;
 const ModalIntro = styled.div``;
 const ImgBtnDiv = styled.div`
-	border: 1px solid black;
 	border-radius: 10px;
 	width: 40%;
 	height: 22rem;
+	background-color: #eff3fd;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.ImgBtn {
+		width: 5rem;
+		height: 5rem;
+	}
 `;
 const Img = styled.img`
 	width: 40%;
@@ -90,7 +97,13 @@ const Modal = ({ show, onCloseModal }) => {
 			</ModalIntro>
 			<TextAreaDiv>
 				<InputFile type="file" multiple accept="image/*" ref={ref} onChange={e => onUploadImg(e)} />
-				{ImgSrc ? <Img src={ImgSrc} /> : <ImgBtnDiv label="이미지 업로드" onClick={HandleUpload} />}
+				{ImgSrc ? (
+					<Img src={ImgSrc} />
+				) : (
+					<ImgBtnDiv label="이미지 업로드" onClick={HandleUpload}>
+						<FaImage className="ImgBtn" />
+					</ImgBtnDiv>
+				)}
 				<TextWrite
 					value={WriteData}
 					onChange={setData}
