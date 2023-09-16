@@ -19,6 +19,7 @@ const TaskItemDiv = styled.div`
 	& p {
 		text-align: center;
 		color: #bdbdbd;
+		margin-top: 4px;
 	}
 `;
 
@@ -36,7 +37,7 @@ const TaskItem = ({ props }) => {
 				<h3>{props.task}</h3>
 				<p>
 					{props.hashTag.map(ele => {
-						return `#${ele}`;
+						return `#${ele} `;
 					})}
 				</p>
 			</TaskItemElement>
