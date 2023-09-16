@@ -5,14 +5,17 @@ import useInput from 'hooks/useInput';
 import { FaSistrix } from 'react-icons/fa6';
 const Container = styled.div`
 	width: 100%;
-	padding: 0 5rem;
 	height: 5rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	border-bottom: 0.05rem solid grey;
 `;
+const Logo = styled.div`
+	margin-left: 80px;
+`;
 const HeaderSide = styled.div`
+	margin-right: 80px;
 	display: flex;
 	gap: 2rem;
 	align-items: center;
@@ -65,7 +68,7 @@ const Header = () => {
 	}, [navigate]);
 	return (
 		<Container>
-			<div>로고</div>
+			<Logo>로고</Logo>
 			<div>
 				{Login && url === 'recipe' ? ( //로그인 상태 && 레시피 페이지
 					<HeaderSide>
