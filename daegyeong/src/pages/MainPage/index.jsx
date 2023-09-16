@@ -3,6 +3,7 @@ import Refrigerator from './Refrigerator';
 import styled from 'styled-components';
 import Main from 'components/Main';
 import RecommendRecipe from './RecommendRecipe';
+import Task from './Task';
 
 const Container = styled.div`
 	display: flex;
@@ -63,6 +64,7 @@ const MainPage = () => {
 
 			<RefrigeratorLayout>
 				<Title>냉장고에 있는 재료로 레시피 추천</Title>
+				<Task />
 				<Row>
 					<RowLayout>
 						<RefrigeratorBox>
