@@ -29,6 +29,10 @@ const Row = styled.div`
 	justify-content: center;
 	margin: 0 3rem;
 `;
+const RowLayout = styled.div`
+display: flex;
+flex-direction: row:
+`;
 const RefrigeratorBox = styled.div`
 	flex: 6;
 	margin: 1rem 1.2rem;
@@ -60,17 +64,19 @@ const MainPage = () => {
 			<RefrigeratorLayout>
 				<Title>냉장고에 있는 재료로 레시피 추천</Title>
 				<Row>
-					<RefrigeratorBox>
-						<div>
-							<SubTitle>{user}님의 냉장고</SubTitle>
-						</div>
-						<RefrigeratorList>
-							<Refrigerator />
-						</RefrigeratorList>
-					</RefrigeratorBox>
-					<RecommendBox>
-						<RecommendRecipe />
-					</RecommendBox>
+					<RowLayout>
+						<RefrigeratorBox>
+							<div>
+								<SubTitle>{user}님의 냉장고</SubTitle>
+							</div>
+							<RefrigeratorList>
+								<Refrigerator />
+							</RefrigeratorList>
+						</RefrigeratorBox>
+						<RecommendBox>
+							<RecommendRecipe />
+						</RecommendBox>
+					</RowLayout>
 				</Row>
 			</RefrigeratorLayout>
 		</Container>
