@@ -1,7 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ItemBox from './ItemBox';
 import Modal from 'components/Modal';
+import axios from 'axios';
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -20,8 +21,8 @@ const SubTitle = styled.span`
 `;
 const RecipeList = styled.div`
 	display: grid;
-	grid-template: repeat(2, 1fr) / repeat(3, 340px);
-	gap: 78px 2rem;
+	grid-template: repeat(2, 1fr) / repeat(3, 380px);
+	gap: 2rem;
 	justify-content: center;
 `;
 const ModalDiv = styled.div`
@@ -32,6 +33,7 @@ const ModalDiv = styled.div`
 `;
 const ModalBtn = styled.button`
 	font-size: 16px;
+	background-color: transparent;
 	border: 0;
 	border-bottom: 1px solid black;
 `;
