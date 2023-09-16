@@ -10,7 +10,7 @@ const Container = styled.div`
 	position: fixed;
 	z-index: 1022;
 	left: 20%;
-	top: 25%;
+	top: 10%;
 	padding: 32px 40px;
 `;
 const ModalTitle = styled.div`
