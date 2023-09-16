@@ -61,12 +61,12 @@ const LoginButton = styled.button`
 `;
 
 const Oauth = () => {
-	const REST_API_KEY = 'd327db44707a21596651c9d4def1507a';
-	const REDIRECT_URI = 'http://localhost:3000';
+	const REST_API_KEY = 'd5f4fb35c8723da094707fa1ce99f285';
+	const REDIRECT_URI = 'http://localhost:3000/auth/login/callback';
 	const link = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
 	const handleLogin = () => {
-		window.location.href = link;
+		window.open(link, '_self');
 	};
 
 	return (

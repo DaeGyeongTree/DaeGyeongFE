@@ -1,32 +1,51 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const KakaoRedirectHandler = () => {
-	useEffect(() => {
-		let params = new URL(document.location.toString()).searchParams;
-		let code = params.get('code'); // 인가코드 받는 부분
-		let grant_type = 'authorization_code';
-		let client_id = 'd327db44707a21596651c9d4def1507a';
+	const navigation = useNavigate();
 
-		axios
-			.post(
-				`https://kauth.kakao.com/oauth/token?
-        grant_type=${grant_type}
-        &client_id=${client_id}
-        &redirect_uri=http://localhost:3000
-        &code=${code}`,
-				{
+	const KaKaoOauth = useCallback(async () => {
+		let params = new URL(window.location.href).searchParams;
+		let code = params.get('code'); // 인가코드 받는 부분
+
+		await axios.get(`http://localhost:3000/auth/login/callback&code=${code}`).then(res => {
+			localStorage.setItem('token', res.data.token);
+			axios
+				.get(`http://localhost:3000/auth/login/callback/userinfo`, {
 					headers: {
-						'Content-type': 'application/json',
+						Authorization: 'Bearer ' + res.data.token,
 					},
-				},
-			)
-			.then(res => {
-				console.log('성공');
-			})
-			.catch(err => {
-				console.log(err);
-			});
+				})
+				.then(response => {
+					navigation('/');
+				});
+		});
+
+		// await axios
+		// 	.post(
+		// 		`https://kauth.kakao.com/oauth/token?
+		//     grant_type=${grant_type}
+		//     &client_id=${client_id}
+		//     &redirect_uri=
+		//     http://localhost:3000
+		//     &code=${code}`,
+		// 		{
+		// 			headers: {
+		// 				'Content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+		// 			},
+		// 		},
+		// 	)
+		// 	.then(res => {
+		// 		console.log('성공');
+		// 	})
+		// 	.catch(err => {
+		// 		console.log(err);
+		// 	});
+	});
+
+	useEffect(() => {
+		KaKaoOauth();
 	}, []);
 
 	return (

@@ -13,7 +13,7 @@ function App() {
 				<Route element={<Layout />}>
 					<Route path="/" element={<MainPage />} />
 					<Route path="/login" element={<Oauth />} />
-					<Route path="/login/oauth/callback/kakao" element={<KakaoRedirectHandler />} />
+					<Route path="/auth/login/callback" element={<KakaoRedirectHandler />} />
 					<Route path="/recipe" element={<RecipePage />} />
 				</Route>
 			</Routes>
