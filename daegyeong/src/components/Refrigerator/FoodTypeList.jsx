@@ -10,8 +10,6 @@ const ListCol = styled.div`
 const FoodTypeList = ({ posts }) => {
 	return (
 		<>
-			<div>식재료 종류 리스트</div>
-			<h5>품목</h5>
 			<ListCol>
 				{posts.map(post => {
 					return <FoodTypeItem type={post.type} />;

@@ -1,43 +1,37 @@
 import React from 'react';
-import { useState } from 'react';
-import FoodImageIcon from '../../components/Refrigerator/FoodImageIcon';
+import { useState, useEffect } from 'react';
+import FoodList from 'components/Refrigerator/FoodList';
 import FoodTypeList from '../../components/Refrigerator/FoodTypeList';
 import styled from 'styled-components';
+import axios from 'axios';
+import { axiosGetQuery } from 'utils/AxiosUtils';
+import { click } from '@testing-library/user-event/dist/click';
+import ButtonList from 'components/Refrigerator/ButtonList';
 
 const Container = styled.div`
-	background-color: #f5f5f5;
+	background-color: #eff3fd;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 `;
+
 const Refrigerator = () => {
-	// const [user, setUser] = useState("^^");
-	const [posts, setPosts] = useState([
-		{ type: '채소' },
-		{ type: '과일' },
-		{ type: '양곡' },
-		{ type: '견과' },
-		{ type: '육류' },
-		{ type: '수산물' },
-		{ type: '양념' },
-		{ type: '조미료' },
-		{ type: '소스' },
-		{ type: '면류' },
-		{ type: '음료' },
-		{ type: '유제품' },
-		{ type: '반찬' },
-		{ type: '김치' },
-		{ type: '과자' },
-		{ type: '인스턴트' },
-	]);
+	const [posts, setPosts] = useState([]);
 
-	const user = 'wndus';
-
-	//axios setPosts()
+	const id = 1;
+	const fetchData = async () => {
+		const res = await axiosGetQuery(`ingredients?category=${id}`);
+		setPosts(res);
+		console.log(res);
+	};
+	useEffect(() => {
+		fetchData();
+	}, []);
 
 	return (
 		<Container>
-			<h1>{user}님의 냉장고</h1>
-
+			<ButtonList />
 			<FoodTypeList posts={posts} />
-			<FoodImageIcon />
+			<FoodList />
 		</Container>
 	);
 };
