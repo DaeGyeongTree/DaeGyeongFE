@@ -1,8 +1,7 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 import styled from 'styled-components';
-import ItemBox from './ItemBox';
+import ItemBox from 'components/ItemBox';
 import Modal from 'components/Modal';
-import axios from 'axios';
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
