@@ -19,6 +19,10 @@ const TaskItemBox = styled.div`
 	padding: 8px 24px 24px 24px;
 	white-space: nowrap;
 	overflow-x: auto;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
 `;
 
 const Task = () => {
