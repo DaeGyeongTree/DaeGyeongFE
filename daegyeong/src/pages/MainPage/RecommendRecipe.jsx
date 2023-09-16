@@ -1,6 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { axiosGetQuery } from 'utils/AxiosUtils';
 import RecommendRecipeList from '../../components/RecommendRecipe/RecommendRecipeList';
 
 const Container = styled.div`
@@ -33,6 +34,20 @@ const RecommendRecipe = () => {
 			tag: '가성비',
 		},
 	]);
+
+	const [lists, setLists] = useState([]);
+
+	const id = 1;
+
+	const fetchData = async () => {
+		const res = await axiosGetQuery('recipes/recommend');
+		console.log(res);
+		setPosts(res);
+	};
+
+	useEffect(() => {
+		//fetchData();
+	}, []);
 
 	return (
 		<Container>
