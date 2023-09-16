@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import FoodListItem from './FoodListItem';
+import FoodListModal from '../Modal/FoodListModal/index';
 
 const FoodListDiv = styled.div`
 	display: flex;
@@ -24,22 +25,6 @@ const PlusBox = styled.div`
 		font-size: 36px;
 	}
 `;
-import React, { Fragment, useState } from 'react';
-import styled from 'styled-components';
-import FoodListItem from './FoodListItem';
-
-const Container = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-`;
-const FoodListBox = styled.div`
-	display: flex;
-	flex-wrap: wrap;
-	align-content: content;
-	justify-content: flex-start;
-	width: 624px;
-`;
 
 const FoodList = () => {
 	const [list, setList] = useState([
@@ -54,44 +39,24 @@ const FoodList = () => {
 			number: '7',
 		},
 	]);
-
-	const [list, setList] = useState([
-		{
-			name: '테스트1',
-			period: '2023.09.22',
-			number: '3',
-		},
-		{
-			name: '테스트2',
-			period: '2023.09.22',
-			number: '7',
-		},
-		{
-			name: '테스트2',
-			period: '2023.09.22',
-			number: '7',
-		},
-		{},
-	]);
+	const [onModal, clsoeModal] = useState(false);
+	let arr = ['1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'];
+	const HandleModal = useCallback(() => {
+		clsoeModal(prev => !prev);
+	}, []);
 
 	return (
 		<>
 			<FoodListDiv>
+				{onModal ? <FoodListModal show={onModal} onCloseModal={HandleModal} /> : ''}
 				{list.map((ele, i) => {
 					return <FoodListItem props={ele} key={i} />;
 				})}
-				<PlusBox>
+				<PlusBox onClick={HandleModal}>
 					<p>+</p>
 				</PlusBox>
 			</FoodListDiv>
 		</>
-		<Container>
-			<FoodListBox>
-				{list.map((ele, i) => {
-					return <FoodListItem props={ele} key={i} />;
-				})}
-			</FoodListBox>
-		</Container>
 	);
 };
 
