@@ -71,7 +71,7 @@ const Oauth = () => {
 
 	return (
 		<LoginParentDiv>
-			<LoginLeftDiv></LoginLeftDiv>
+			<LoginLeftDiv />
 			<LoginRightDiv>
 				<h2>
 					Logoipsum과 함께,
