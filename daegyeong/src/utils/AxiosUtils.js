@@ -1,6 +1,6 @@
 import axios from 'axios';
 //const ENDPOINT = process.env.REACT_APP_ENDPOINT;
-const ENDPOINT = 'http://223.130.138.60:8080/';
+const ENDPOINT = 'http://223.130.138.60:8080';
 const defaultHeaders = {
 	headers: {
 		'Content-Type': 'application/json',

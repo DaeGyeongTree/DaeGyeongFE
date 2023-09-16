@@ -9,17 +9,9 @@ const KakaoRedirectHandler = () => {
 		let params = new URL(window.location.href).searchParams;
 		let code = params.get('code'); // 인가코드 받는 부분
 
-		await axios.get(`http://223.130.138.60:8080/auth/login/callback&code=${code}`).then(res => {
+		await axios.get(`http://223.130.138.60:8080/auth/login?code=${code}`).then(res => {
 			localStorage.setItem('token', res.data.token);
-			axios
-				.get(`http://localhost:3000`, {
-					headers: {
-						Authorization: 'Bearer ' + res.data.token,
-					},
-				})
-				.then(response => {
-					navigation('/');
-				});
+			console.log(res);
 		});
 
 		// await axios

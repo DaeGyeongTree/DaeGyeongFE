@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import FoodListItem from './FoodListItem';
+import FoodListModal from '../Modal/FoodListModal/index';
 
 const FoodListDiv = styled.div`
 	display: flex;
@@ -38,14 +39,20 @@ const FoodList = () => {
 			number: '7',
 		},
 	]);
+	const [onModal, clsoeModal] = useState(false);
+	let arr = ['1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'];
+	const HandleModal = useCallback(() => {
+		clsoeModal(prev => !prev);
+	}, []);
 
 	return (
 		<>
 			<FoodListDiv>
+				{onModal ? <FoodListModal show={onModal} onCloseModal={HandleModal} /> : ''}
 				{list.map((ele, i) => {
 					return <FoodListItem props={ele} key={i} />;
 				})}
-				<PlusBox>
+				<PlusBox onClick={HandleModal}>
 					<p>+</p>
 				</PlusBox>
 			</FoodListDiv>

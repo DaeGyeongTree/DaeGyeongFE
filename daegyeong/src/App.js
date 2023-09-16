@@ -5,6 +5,7 @@ import MainPage from 'pages/MainPage';
 import RecipePage from 'pages/RecipePage';
 import Oauth from 'pages/Oauth';
 import KakaoRedirectHandler from 'components/KakaoRedirectHandler';
+import DetailPage from 'pages/ DetailPage';
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 					<Route path="/login" element={<Oauth />} />
 					<Route path="/auth/login/callback" element={<KakaoRedirectHandler />} />
 					<Route path="/recipe" element={<RecipePage />} />
+					<Route path="/Detail/:id" element={<DetailPage />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>

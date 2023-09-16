@@ -10,32 +10,39 @@ import ButtonList from 'components/Refrigerator/ButtonList';
 
 const Container = styled.div`
 	background-color: #eff3fd;
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
+	border-radius: 10px;
 `;
 const FoodTypeListBox = styled.div`
 	display: flex;
 	justify-content: center;
+	margin-bottom: 2rem;
 `;
 
 const Refrigerator = () => {
-	const [posts, setPosts] = useState([]);
+	// const [posts, setPosts] = useState([]);
+	const [lists, setLists] = useState([]);
 
-	const id = 1;
-	const fetchData = async () => {
-		const res = await axiosGetQuery(`ingredients?category=${id}`);
-		setPosts(res);
+	// const id = 1;
+	// const fetchData = async () => {
+	// 	const res = await axiosGetQuery(`ingredients?category=${id}`);
+	// 	setPosts(res);
+	// };
+	const fetchData2 = async () => {
+		const res = await axiosGetQuery('/ingredients/category');
 		console.log(res);
+		setLists(res);
 	};
+
 	useEffect(() => {
-		fetchData();
+		fetchData2();
 	}, []);
+	// useEffect(() => {}, [fetchData]);
 
 	return (
 		<Container>
 			<ButtonList />
 			<FoodTypeListBox>
-				<FoodTypeList posts={posts} />
+				<FoodTypeList lists={lists} />
 			</FoodTypeListBox>
 			<FoodList />
 		</Container>
