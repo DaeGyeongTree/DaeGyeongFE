@@ -1,19 +1,11 @@
 import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const ButtonLayout = styled.div`
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	margin-bottom: 1.8rem;
-`;
 const ButtonBox = styled.div`
 	flex: 1;
-`;
-const ButtonItem = styled.div`
-	display: flex;
-	flex-direction: column;
-	flex: 1;
+	margin: 0.5rem;
 `;
 const OnButton = styled.button`
 	background-color: #92abf3;
@@ -21,28 +13,33 @@ const OnButton = styled.button`
 	color: white;
 	font-size: 1.2rem;
 	border-radius: 20px;
-	padding: 0.7rem;
+	padding: 0.7rem 1.5rem;
 `;
 const OffButton = styled.button`
 	background-color: transparent;
-	border: none;
+	border: 1px solid #bdbdbd;
 	color: #bdbdbd;
 	border-radius: 20px;
-	padding: 0.7rem;
-
-	font-size: 1rem;
-	border: 1px solid #bdbdbd;
+	font-size: 1.2rem;
+	padding: 0.7rem 1.5rem;
 `;
 
-const FoodTypeItem = ({ type }) => {
+const FoodTypeItem = ({ name }) => {
+	const [clicked, setCliked] = useState(true);
+	const handleClicked = () => {
+		setCliked(!clicked);
+	};
+
 	return (
-		<ButtonLayout>
-			<ButtonItem>
-				<ButtonBox>
-					<OnButton>{type}</OnButton>
-				</ButtonBox>
-			</ButtonItem>
-		</ButtonLayout>
+		<div>
+			<ButtonBox>
+				{clicked ? (
+					<OnButton onClick={handleClicked}>{name}</OnButton>
+				) : (
+					<OffButton onClick={handleClicked}>{name}</OffButton>
+				)}
+			</ButtonBox>
+		</div>
 	);
 };
 
